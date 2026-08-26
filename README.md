@@ -2,6 +2,8 @@
 
 ## Repository stuckture
 
+```text
+.
 mini-siem/
 ├── config/
 │   └── rules.json
@@ -10,3 +12,4 @@ mini-siem/
 ├── src/
 │   ├── __init__.py
 └── README.md
+```
