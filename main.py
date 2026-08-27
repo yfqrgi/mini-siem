@@ -1,37 +1,25 @@
-from collections import Counter
-import re
+from src.database import get_all_alerts, init_db
+from src.detector import detect_brute_force
+from src.parser import parser_ssh_logs
 
-LOG_FILE_PATH = "logs/sample_auth.log"
-BRUTE_FORCE_THRESHOLD = 3
+LOG_FILE = "logs/sample_auth.log"
 
-def parse_and_detect(log_path):
-    pattern = r"Failed password for .* from (?P<ip>\d+\.\d+\.\d+\.\d+)"
 
-    failed_attempts = []
+def main():
 
-    print("[*] Analyzing log file...\n")
+    init_db()
 
-    with open(log_path, "r") as file:
-        for line in file:
-            math = re.search(pattern, line)
-            if math:
-                ip = math.group("ip")
-                failed_attempts.append(ip)
+    print("[*] Analyzing logs...")
+    ip_counts = parser_ssh_logs(LOG_FILE)
 
-    ip_count = Counter(failed_attempts)
+    print("\n=== SAFETY WARNINGS ===")
+    detect_brute_force(ip_counts, threshold=3)
 
-    print("=== SAFETY WARNINGS (ALERTS) ===")
-    detect = False
-    for ip, count in ip_count.items():
-        if count >= BRUTE_FORCE_THRESHOLD:
-            print(
-                f"[ALERT] SSH Brute-Force vulnerability detected! IP: {ip} -> {count} unsuccessful attempts"
-            )
-            detect = True
-
-    if not detect:
-        print("[INFO] No suspicious activity detected")
+    print("\n=== LATEST ALERTS ON DATABASE ===")
+    alerts = get_all_alerts()
+    for alert in alerts:
+        print(f"ID: {alert[0]} | TIME: {alert[1]} | IP: {alert[2]} | Attempts: {alert[3]} | Type: {alert[4]}")
 
 
 if __name__ == "__main__":
-    parse_and_detect(LOG_FILE_PATH)
+    main()
