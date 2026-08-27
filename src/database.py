@@ -5,7 +5,7 @@ DB_NAME = "siem_events.db"
 
 
 def init_db():
-    """Baza va jadvalni yaratadi."""
+    """"""
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
 
@@ -26,7 +26,7 @@ def init_db():
 
 
 def save_alert(ip_address: str, attempts: int, attack_type: str = "SSH Brute-Force"):
-    """Aniqlangan ogohlantirishni bazaga yozadi."""
+    """"""
     conn = sqlite3.connect(DB_NAME)
     cursor = conn.cursor()
 
@@ -42,3 +42,15 @@ def save_alert(ip_address: str, attempts: int, attack_type: str = "SSH Brute-For
 
     conn.commit()
     conn.close()
+
+
+def get_all_alerts():
+    """"""
+    conn = sqlite3.connect(DB_NAME)
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM alerts ORDER BY timestamp DESC")
+    rows = cursor.fetchall()
+
+    conn.close()
+    return rows
