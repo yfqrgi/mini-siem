@@ -34,4 +34,4 @@ def parse_and_detect(log_path):
 
 
 if __name__ == "__main__":
-    parse_and_detect()
+    parse_and_detect(LOG_FILE_PATH)
