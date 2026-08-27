@@ -1,7 +1,0 @@
-{
-  "source_ip": "192.168.1.100",
-  "username": "admin",
-  "action": "login_attempt",
-  "status": "failed",
-  "timestamp": "2025-06-16T11:20:19.577Z"
-}
