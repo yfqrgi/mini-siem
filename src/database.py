@@ -23,3 +23,22 @@ def init_db():
 
     conn.commit()
     conn.close()
+
+
+def save_alert(ip_address: str, attempts: int, attack_type: str = "SSH Brute-Force"):
+    """Aniqlangan ogohlantirishni bazaga yozadi."""
+    conn = sqlite3.connect(DB_NAME)
+    cursor = conn.cursor()
+
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    cursor.execute(
+        """
+        INSERT INTO alerts (timestamp, ip_address, attempts, attack_type)
+        VALUES (?, ?, ?, ?)
+    """,
+        (now, ip_address, attempts, attack_type),
+    )
+
+    conn.commit()
+    conn.close()
