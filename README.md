@@ -11,5 +11,9 @@ mini-siem/
 │   └── sample_auth.log
 ├── src/
 │   ├── __init__.py
+│   ├── database.py
+│   ├── parser.py
+└── .gitignore
+└── main.py
 └── README.md
 ```
