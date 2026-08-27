@@ -12,6 +12,7 @@ mini-siem/
 ├── src/
 │   ├── __init__.py
 │   ├── database.py
+│   ├── detector.py
 │   ├── parser.py
 └── .gitignore
 └── main.py
