@@ -3,14 +3,14 @@ from src.database import save_alert
 
 
 def detect_brute_force(ip_count: Counter, threshold: int=3, save_to_db: bool = True):
-    detect = False
+    detected = False
 
     for ip, count in ip_count.items():
         if count >= threshold:
             print(f"[ALERT] Brute-Force threat! IP:{ip} {count} unsuccessfull attempts")
             if save_to_db:
                 save_alert(ip, count, attack_type="SSH Brute-Force")
-            detect = True
+            detected = True
 
-    if not detect:
+    if not detected:
         print("[INFO] No suspecious activitt was detected")
