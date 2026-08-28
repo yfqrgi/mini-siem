@@ -20,6 +20,7 @@ A lightweight modular Security Information and Event Management (SIEM) CLI tool 
 
 ## 🏗 System Architecture
 
+```text
 +-------------------+      +-------------------+      +---------------------+
 |  logs/auth.log    | ---> |   src/parser.py   | ---> |   src/detector.py   |
 | (Raw System Log)  |      |  (Regex Extraction)|      | (Threat Detection)  |
@@ -30,9 +31,11 @@ A lightweight modular Security Information and Event Management (SIEM) CLI tool 
 |    Terminal /     | <------------------------------ |   src/database.py   |
 |   CLI Output      |     (Query Saved Alerts)        |   (SQLite Storage)  |
 +-------------------+                                 +---------------------+
+```
 
 ## Repository Structure
 
+```text
 mini-siem/
 ├── logs/               # Sample log files for testing
 │   └── sample_auth.log
@@ -43,6 +46,7 @@ mini-siem/
 │   └── parser.py       # Log parsing module using Regex
 ├── main.py             # CLI entrypoint
 └── README.md           # Project documentation
+```
 
 ## Installation & Usage
 
