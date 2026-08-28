@@ -18,7 +18,7 @@ A lightweight modular Security Information and Event Management (SIEM) CLI tool 
 
 ---
 
-## 🏗 System Architecture
+## System Architecture
 
 ```text
 +-------------------+      +-------------------+      +---------------------+
