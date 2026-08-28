@@ -55,7 +55,7 @@ Ensure you have Python 3.10+ installed on your machine. No third-party packages 
 
 2. Clone the Repository
 ```bash
-git clone https://github.com/yfqrgi/mini-siem.git
+git clone [https://github.com/yfqrgi/mini-siem.git](https://github.com/yfqrgi/mini-siem.git)
 cd mini-siem
 ```
 
