@@ -65,7 +65,8 @@ Execute the CLI application:
 python3 main.py
 ```
 
-Example Output
+### Example Output
+```text
 [*] Analyzing logs...
 
 === SAFETY WARNINGS ===
