@@ -73,7 +73,7 @@ else:
     with g1:
         st.subheader("Distribution by attack type")
         attack_type_counts = df["attack_type"].value_counts()
-        st.bar_chart(data=attack_type_counts, color="FFA500")
+        st.bar_chart(data=attack_type_counts, color="#FFA500")
 
     st.divider()
 
