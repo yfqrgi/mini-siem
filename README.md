@@ -45,9 +45,9 @@ mini-siem/
 │   ├── detector.py     # Threat detection logic engine
 │   └── parser.py       # Regex log parser engine
 ├── .gitignore
+├── README.md           # Project documentation
 ├── app.py              # Interactive Streamlit web dashboard
 ├── main.py             # CLI entrypoint for analysis
-├── README.md           # Project documentation
 └── requirements.txt    # Project dependencies
 ```
 
