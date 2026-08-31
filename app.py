@@ -40,3 +40,64 @@ with col_refresh:
         st.rerun()
 
 df = load_data()
+
+if df.empty:
+    st.warning("There are no warnings in the database yet")
+else:
+    st.divider()
+
+    total_alerts = len(df)
+    unique_ips = df["ip_address"].nunique()
+    total_attempts = df["attempts"].sum()
+    top_attacker = df["ip_address"].mode()[0] if not df.empty else "N/A"
+
+    m1, m2, m3, m4 = st.columns(4)
+    m1.metric(label="Total Warnings (Alerts)", value=total_alerts)
+    m2.metric(label="Number of suspicious IPs", value=unique_ips)
+    m3.metric(label="Common Unsuccessful Attempts", value=total_attempts)
+    m4.metric(label="Most active attacker IP", value=top_attacker)
+
+    st.divider()
+
+    g1, g2 = st.columns(2)
+
+    with g1:
+        st.subheader("Top Attacker IP Addresses")
+        ip_counts = (
+            df.groupby("ip_address")["attempts"]
+            .sum()
+            .reset_index()
+            .sort_values(by="attempts", ascending=False)
+        )
+
+    with g1:
+        st.subheader("Distribution by attack type")
+        attack_type_counts = df["attack_type"].value_counts()
+        st.bar_chart(data=attack_type_counts, color="FFA500")
+
+    st.divider()
+
+    st.subheader("All Alert History")
+
+    search_ip = st.text_input("Search by IP address:", "")
+
+    filtered_df = df.copy()
+    if search_ip:
+        filtered_df = filtered_df[
+            filtered_df["ip_address"].str.contains(search_ip, case=False)
+        ]
+
+    st.dataframe(
+        filtered_df,
+        column_config={
+            "id": "ID",
+            "timestamp": st.column_config.DatetimeColumn(
+                "Time", format="YYYY-MM-DD HH-mm:ss"
+            ),
+            "ip_address": "IP Address",
+            "attempts": "Number of Attempts",
+            "attack_type": "Attack Type"
+        },
+        use_container_width=True,
+        hide_index=True,
+    )
