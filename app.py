@@ -25,3 +25,18 @@ def load_data():
             f"Error connecting to database: {e}. Make sure you run main.py first"
         )
         return pd.DataFrame()
+
+
+col_title, col_refresh = st.columns([4, 1])
+with col_title:
+    st.title("Mini SIEM & Threat Detection Dashboard")
+    st.caption(
+        "Real-time log analysis and anomaly monitoring dashboard"
+    )
+
+with col_refresh:
+    st.write("")
+    if st.button("Update data", use_container_width=True):
+        st.rerun()
+
+df = load_data()
