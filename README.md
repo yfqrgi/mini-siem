@@ -44,8 +44,11 @@ mini-siem/
 │   ├── database.py     # Database schema and SQLite queries
 │   ├── detector.py     # Threat detection engine
 │   └── parser.py       # Log parsing module using Regex
+├── .gitignore
+├── app.py
 ├── main.py             # CLI entrypoint
-└── README.md           # Project documentation
+├── README.md           # Project documentation
+└── requirements.txt
 ```
 
 ## Installation & Usage
