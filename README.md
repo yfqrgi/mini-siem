@@ -12,7 +12,7 @@ A lightweight modular Security Information and Event Management (SIEM) tool desi
 ##  Features
 
 - **Modular Architecture:** Clean separation of concerns with parsing, threat detection, persistent storage, and UI presentation layers
-- **Log Parsing Engine:** Efficient extraction of authentication metrics from `auth.log` files using Regular Expressions (Regex)
+- **Log Parsing Engine:** Efficient extraction of authentication metrics from `sample_auth.log` files using Regular Expressions (Regex)
 - **Rule-Based Threat Detection:** Automated identification of SSH brute-force patterns based on configurable thresholds
 - **Persistent Storage:** Incident logging and audit trail using an SQLite relational database
 - **Interactive Web Dashboard:** Real-time analytics, incident charts, search filters, and security KPIs powered by Streamlit
